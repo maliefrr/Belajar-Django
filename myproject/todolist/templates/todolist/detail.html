@@ -1,0 +1,32 @@
+{% extends 'todolist/base.html' %}
+
+{% block title %} {{item.Nama}}{% endblock %}
+
+{% block nama %}  {{item.Nama}} {% endblock %}
+{% block content %}
+    <a href="{% url 'todolist:index' %}">All user</a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for item in item.todolist_set.all %}
+                <li>
+                    <div>                        
+                        {{item.item}}
+                        {% if item.condition == True %}
+                            <input type="checkbox" name="c{{item.id}}" checked>
+                        {% else %}
+                            <input type="checkbox" name="c{{item.id}}">    
+                        {% endif %}                    
+                    </div>
+                </li>
+
+            {% endfor %}
+            <br>
+            <input type="submit" value="Submit" name='Update'>
+        </ul>
+        <hr>
+        <input type="text" name="NewItem">
+        <input type="submit" value="Add Item">
+    </form>
+
+{% endblock %}

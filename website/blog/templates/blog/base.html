@@ -1,0 +1,25 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <title>My Blog {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>{% block header %}{% endblock %}</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="/">HomePage</a>
+    <a href="{% url 'MyBlog:index' %}">Blog</a>
+    <a href="/kontak">Contact me</a>
+    <hr>
+    {% block content %}{% endblock %} 
+</body>
+</html>

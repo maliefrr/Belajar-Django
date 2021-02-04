@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{%block title%} | home {% endblock %}
+
+{% block header %}  Ini halaman Blog {% endblock %}
+{% block content %}
+
+    {% for blog in blogs %}
+       <a href="{% url 'MyBlog:detail' blog.id %}"> <h2>{{blog.title}}</h2> </a>
+        <h4>{{blog.desc}}</h4>
+    {% endfor %}   
+{% endblock %}

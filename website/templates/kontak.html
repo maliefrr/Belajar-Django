@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} | Kontak {% endblock %}
+
+{% block header %} Halaman Kontak {% endblock %}
+
+{% block content %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Kirim Email">
+
+    </form>
+{% endblock %}

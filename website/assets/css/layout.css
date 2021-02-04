@@ -1,0 +1,9 @@
+body{
+    background-color : #a9a9a9;
+    width: 70%;
+    margin: auto;
+}
+
+.eror {
+    color: red;
+}

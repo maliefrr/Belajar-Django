@@ -1,0 +1,17 @@
+{% extends 'todolist/base.html' %}
+
+{% block title %} All User {% endblock %}
+
+{% block content %} 
+    <ul>
+        {% for user in orang %}
+        <li><a href="{% url 'todolist:detail' user.id %}">{{user.Nama}}</a></li>
+        {% endfor %}
+    </ul>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="NewUser" placeholder="Nama User">
+        <input type="submit" value="Create User">
+    </form>
+
+{% endblock %}

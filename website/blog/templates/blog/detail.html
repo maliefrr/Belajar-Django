@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}  | {{blog.desc}} {% endblock %}
+
+{% block header %}  {{blog.title}} {% endblock %}
+
+{% block content %}
+    <h3>{{blog.desc}}</h3>
+    <h3>{{blog.created}}</h3>
+    <hr>
+    <h1>Komentar</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Komen">
+    </form>
+
+    {% for blog in blog.comment_set.all %}
+        <ul>
+            <li><h4>{{blog.desc}} - <a href="{% url 'MyBlog:edit' blog.id %}">Edit</a></h4></li>
+        </ul>
+    {% endfor %}    
+{% endblock %}
